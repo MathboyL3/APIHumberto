@@ -1,12 +1,12 @@
-﻿using APIHumberto.ViewModels.Aluno;
+﻿using APIHumberto.Models.Request.Aluno;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace APIHumberto.Controllers
 {
-	[Route("api/[controller]")]
-	public class AlunosController : ControllerBase
+    [Route("api/[controller]")]
+	public class AlunosController : MainController
 	{
 		private const string CaminhoArquivoAlunos = @".\Data\";
 		private const string NomeArquivoAlunos = "alunos.json";
@@ -64,16 +64,16 @@ namespace APIHumberto.Controllers
 		[HttpPost]
 		public IActionResult Create([FromBody] AlunoViewModel aluno)
 		{
-			if (aluno == null || string.IsNullOrEmpty(aluno.RA))
+			if (aluno == null)
 				return BadRequest("Objeto não é válio");
 
 			List<AlunoViewModel> alunos = LerAlunosDB();
 			if (alunos.Where(a => a.RA.Equals(aluno.RA)).Count() > 0)
-				return BadRequest("Já possui um aluno com essee RA");
+				return ApiBadRequestResponse(ModelState, "Já possui um aluno com essee RA");
 
 			alunos.Add(aluno);
 			GuardarAlunosDB(alunos);
-			return Ok();
+			return ApiOkResponse(aluno, "Aluno criado com sucesso.");
 		}
 
 		[HttpPut("{ra}")]

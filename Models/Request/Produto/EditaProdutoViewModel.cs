@@ -1,8 +1,7 @@
-﻿namespace APIHumberto.ViewModels.Produto
+﻿namespace APIHumberto.Models.Request.Produto
 {
-    public class ProdutoViewModel
+    public class EditaProdutoViewModel
     {
-        public int Codigo { get; set; }
         public decimal Valor { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }

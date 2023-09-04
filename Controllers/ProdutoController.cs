@@ -1,4 +1,4 @@
-using APIHumberto.ViewModels.Produto;
+using APIHumberto.Models.Request.Produto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.IO;

@@ -1,6 +1,6 @@
-﻿namespace APIHumberto.ViewModels.Produto
+﻿namespace APIHumberto.Models.Request.Produto
 {
-    public class EditaProdutoViewModel
+    public class NovoProdutoViewModel
     {
         public decimal Valor { get; set; }
         public string Nome { get; set; }
